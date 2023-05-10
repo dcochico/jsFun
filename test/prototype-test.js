@@ -1,9 +1,20 @@
 const chai = require("chai");
 const expect = chai.expect;
-const { puppers } = require('../prototypes/datasets/puppers')
-const { kitties } = require('../prototypes/datasets/kitties')
-const { clubs } = require('../prototypes/datasets/clubs')
-const { books } = require('../prototypes/datasets/books')
+const { puppers } = require('../prototypes/datasets/puppers');
+const { kitties } = require('../prototypes/datasets/kitties');
+const { clubs } = require('../prototypes/datasets/clubs');
+const { mods } = require('../prototypes/datasets/mods');
+const { cakes } = require('../prototypes/datasets/cakes');
+const { classrooms } = require('../prototypes/datasets/classrooms');
+const { books } = require('../prototypes/datasets/books');
+const { weather } = require('../prototypes/datasets/weather');
+const { nationalParks } = require('../prototypes/datasets/nationalParks');
+const { breweries } = require('../prototypes/datasets/breweries');
+const { instructors, cohorts } = require('../prototypes/datasets/turing');
+const { bosses, sidekicks } = require('../prototypes/datasets/bosses');
+const { constellations, stars } = require('../prototypes/datasets/astronomy');
+const { characters, weapons } = require('../prototypes/datasets/ultima');
+const { dinosaurs, humans, movies } = require('../prototypes/datasets/dinosaurs');
 
 const {
   breweryPrompts,
@@ -25,13 +36,13 @@ const {
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
-    it.skip("orangeKittyNames", () => {
+    it("orangeKittyNames", () => {
       const e = kittyPrompts.orangePetNames(kitties);
 
       expect(e).to.deep.equal(["Tiger", "Snickers"])
     });
 
-    it.skip("sortByAge", () => {
+    it("sortByAge", () => {
       const e = kittyPrompts.sortByAge(kitties);
 
       expect(e).to.deep.equal([{
@@ -53,7 +64,7 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("growUp", () => {
+    it("growUp", () => {
       const e = kittyPrompts.growUp(kitties);
 
       expect(e).to.deep.equal([{
@@ -75,13 +86,13 @@ describe("PROTOTYPES", () => {
       }])
     })
     describe('kittyPrompts refactor', () => {
-      it.skip('should be able to handle orange puppers', () => {
+      it('should be able to handle orange puppers', () => {
         const e = kittyPrompts.orangePetNames(puppers);
 
         expect(e).to.deep.equal(["Hatchet", "Butter"])
       })
 
-      it.skip('should sort pups too', () => {
+      it('should sort pups too', () => {
         const e = kittyPrompts.sortByAge(puppers);
 
         expect(e).to.deep.equal([{
@@ -103,7 +114,7 @@ describe("PROTOTYPES", () => {
         }])
       })
 
-      it.skip('should age puppers too', () => {
+      it('should age puppers too', () => {
         const e = kittyPrompts.growUp(puppers);
 
         expect(e).to.deep.equal([{
@@ -128,7 +139,7 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Club Prompts", () => {
-    it.skip("membersBelongingToClubs", () => {
+    it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs(clubs);
 
       expect(e).to.deep.equal({
@@ -147,8 +158,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Mod Prompts", () => {
-    it.skip("studentsPerMod", () => {
-      const e = modPrompts.studentsPerMod();
+    it("studentsPerMod", () => {
+      const e = modPrompts.studentsPerMod(mods);
 
       expect(e).to.deep.equal([{
         mod: 1,
@@ -167,8 +178,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Cake Prompts", () => {
-    it.skip("stockPerCake", () => {
-      const e = cakePrompts.stockPerCake();
+    it("stockPerCake", () => {
+      const e = cakePrompts.stockPerCake(cakes);
 
       expect(e).to.deep.equal([{
         flavor: "dark chocolate",
@@ -191,8 +202,8 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("onlyInStock", () => {
-      const e = cakePrompts.onlyInStock();
+    it("onlyInStock", () => {
+      const e = cakePrompts.onlyInStock(cakes);
 
       expect(e).to.deep.equal([{
         cakeFlavor: "dark chocolate",
@@ -221,20 +232,20 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("totalInventory", () => {
-      const e = cakePrompts.totalInventory();
+    it("totalInventory", () => {
+      const e = cakePrompts.totalInventory(cakes);
 
       expect(e).to.deep.equal(59)
     });
 
-    it.skip("allToppings", () => {
-      const e = cakePrompts.allToppings();
+    it("allToppings", () => {
+      const e = cakePrompts.allToppings(cakes);
 
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
     });
 
-    it.skip("groceryList", () => {
-      const e = cakePrompts.groceryList();
+    it("groceryList", () => {
+      const e = cakePrompts.groceryList(cakes);
 
       expect(e).to.deep.equal({
         "dutch process cocoa": 1,
@@ -250,8 +261,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Class Prompts", () => {
-    it.skip("feClassrooms", () => {
-      const e = classPrompts.feClassrooms();
+    it("feClassrooms", () => {
+      const e = classPrompts.feClassrooms(classrooms);
 
       expect(e).to.deep.equal([{
         roomLetter: "A",
@@ -272,8 +283,8 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("totalCapacities", () => {
-      const e = classPrompts.totalCapacities();
+    it("totalCapacities", () => {
+      const e = classPrompts.totalCapacities(classrooms);
 
       expect(e).to.deep.equal({
         feCapacity: 110,
@@ -281,8 +292,8 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("sortByCapacity", () => {
-      const e = classPrompts.sortByCapacity();
+    it("sortByCapacity", () => {
+      const e = classPrompts.sortByCapacity(classrooms);
 
       expect(e).to.deep.equal([{
         roomLetter: "H",
@@ -321,7 +332,7 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Book prompts", () => {
-    it.skip("removeViolence", () => {
+    it("removeViolence", () => {
       const e = bookPrompts.removeViolence(books);
 
       expect(e).to.deep.equal(['1984',
@@ -340,7 +351,7 @@ describe("PROTOTYPES", () => {
         'Treasure Island'])
     });
 
-    it.skip("getNewBooks", () => {
+    it("getNewBooks", () => {
       const e = bookPrompts.getNewBooks(books);
 
       expect(e).to.deep.equal([{
@@ -352,7 +363,7 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("getBooksByYear", () => {
+    it("getBooksByYear", () => {
       const e = bookPrompts.getBooksByYear(books, 1990);
 
       expect(e).to.deep.equal([{
@@ -376,21 +387,21 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Weather prompts", () => {
-    it.skip("getAverageTemps", () => {
-      const e = weatherPrompts.getAverageTemps();
+    it("getAverageTemps", () => {
+      const e = weatherPrompts.getAverageTemps(weather);
 
       expect(e).to.deep.equal([
         40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5
       ])
     }),
-      it.skip("findSunnySpots", () => {
-        const e = weatherPrompts.findSunnySpots();
+      it("findSunnySpots", () => {
+        const e = weatherPrompts.findSunnySpots(weather);
 
         expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
         )
       }),
-      it.skip("findHighestHumidity", () => {
-        const e = weatherPrompts.findHighestHumidity();
+      it("findHighestHumidity", () => {
+        const e = weatherPrompts.findHighestHumidity(weather);
 
         expect(e).to.deep.equal({
           location: 'Portland, Oregon',
@@ -402,16 +413,16 @@ describe("PROTOTYPES", () => {
   });
 
   describe("National Park Prompts", () => {
-    it.skip("getParkVisitList", () => {
-      const e = nationalParksPrompts.getParkVisitList();
+    it("getParkVisitList", () => {
+      const e = nationalParksPrompts.getParkVisitList(nationalParks);
 
       expect(e).to.deep.equal({
         parksToVisit: ['Yellowstone', 'Glacier', 'Everglades'],
         parksVisited: ['Rocky Mountain', 'Acadia', 'Zion']
       })
     }),
-      it.skip("getParkActivities", () => {
-        const e = nationalParksPrompts.getParkActivities();
+      it("getParkActivities", () => {
+        const e = nationalParksPrompts.getParkActivities(nationalParks);
 
         expect(e).to.deep.equal(
           ['hiking',
@@ -428,8 +439,8 @@ describe("PROTOTYPES", () => {
             'rock climbing'
           ])
       }),
-      it.skip("getParkInEachState", () => {
-        const e = nationalParksPrompts.getParkInEachState();
+      it("getParkInEachState", () => {
+        const e = nationalParksPrompts.getParkInEachState(nationalParks);
 
         expect(e).to.deep.equal(
           [
@@ -444,14 +455,14 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Brewery Prompts", () => {
-    it.skip("getBeerCount", () => {
-      const e = breweryPrompts.getBeerCount();
+    it("getBeerCount", () => {
+      const e = breweryPrompts.getBeerCount(breweries);
 
       expect(e).to.deep.equal(40)
     });
 
-    it.skip("getBreweryBeerCount", () => {
-      const e = breweryPrompts.getBreweryBeerCount();
+    it("getBreweryBeerCount", () => {
+      const e = breweryPrompts.getBreweryBeerCount(breweries);
 
       expect(e).to.deep.equal([{
         name: "Little Machine Brew",
@@ -471,7 +482,7 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("getSingleBreweryBeerCount", () => {
+    it("getSingleBreweryBeerCount", () => {
       const ratioCount = breweryPrompts.getSingleBreweryBeerCount('Ratio Beerworks');
       const plattCount = breweryPrompts.getSingleBreweryBeerCount('Platt Park Brewing Co.');
 
@@ -479,8 +490,8 @@ describe("PROTOTYPES", () => {
       expect(plattCount).to.equal(7);
     });
 
-    it.skip("findHighestAbvBeer", () => {
-      const e = breweryPrompts.findHighestAbvBeer();
+    it("findHighestAbvBeer", () => {
+      const e = breweryPrompts.findHighestAbvBeer(breweries);
 
       expect(e).to.deep.equal({
         name: "Barrel Aged Nature's Sweater",
@@ -492,7 +503,7 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Board Game Prompts", () => {
-    it.skip("listGames", () => {
+    it("listGames", () => {
       const strategyGames = boardGamePrompts.listGames('strategy');
       const childrensGames = boardGamePrompts.listGames('childrens');
       const partyGames = boardGamePrompts.listGames('party');
@@ -502,7 +513,7 @@ describe("PROTOTYPES", () => {
       expect(partyGames).to.deep.equal(["Werewolf", "Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro"]);
     });
 
-    it.skip("listGamesAlphabetically", () => {
+    it("listGamesAlphabetically", () => {
       const strategyGames = boardGamePrompts.listGamesAlphabetically('strategy');
       const childrensGames = boardGamePrompts.listGamesAlphabetically('childrens');
       const partyGames = boardGamePrompts.listGamesAlphabetically('party');
@@ -512,7 +523,7 @@ describe("PROTOTYPES", () => {
       expect(partyGames).to.deep.equal(["Cards Against Humanity", "Codenames", "Sushi Go! Party", "Tsuro", "Werewolf"]);
     });
 
-    it.skip("findHighestRatedGamesByType", () => {
+    it("findHighestRatedGamesByType", () => {
       const highestStrategy = boardGamePrompts.findHighestRatedGamesByType('strategy');
       const highestChildrens = boardGamePrompts.findHighestRatedGamesByType('childrens');
       const highestParty = boardGamePrompts.findHighestRatedGamesByType('party');
@@ -522,7 +533,7 @@ describe("PROTOTYPES", () => {
       expect(highestParty).to.deep.equal({ name: 'Codenames', rating: 7.4, maxPlayers: 8 });
     });
 
-    it.skip("averageScoreByType", () => {
+    it("averageScoreByType", () => {
       const avScoreStrat = boardGamePrompts.averageScoreByType('strategy');
       const avScoreChildren = boardGamePrompts.averageScoreByType('childrens');
       const avScoreParty = boardGamePrompts.averageScoreByType('party');
@@ -532,7 +543,7 @@ describe("PROTOTYPES", () => {
       expect(Math.round(avScoreParty * 100) / 100).to.equal(6.54);
     });
 
-    it.skip("averageScoreByTypeAndPlayers", () => {
+    it("averageScoreByTypeAndPlayers", () => {
       const avScoreStrat = boardGamePrompts.averageScoreByTypeAndPlayers('strategy', 2);
       const avScoreChildren = boardGamePrompts.averageScoreByTypeAndPlayers('childrens', 4);
       const avScoreParty = boardGamePrompts.averageScoreByTypeAndPlayers('party', 8);
@@ -544,8 +555,8 @@ describe("PROTOTYPES", () => {
   })
 
   describe("Turing Prompts", () => {
-    it.skip("studentsForEachInstructor", () => {
-      const e = turingPrompts.studentsForEachInstructor();
+    it("studentsForEachInstructor", () => {
+      const e = turingPrompts.studentsForEachInstructor(instructors, cohorts);
 
       expect(e).to.deep.equal([{
         name: "Pam",
@@ -577,8 +588,8 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("studentsPerInstructor", () => {
-      const e = turingPrompts.studentsPerInstructor();
+    it("studentsPerInstructor", () => {
+      const e = turingPrompts.studentsPerInstructor(instructors, cohorts);
 
       expect(e).to.deep.equal({
         cohort1806: 15,
@@ -588,8 +599,8 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("modulesPerTeacher", () => {
-      const e = turingPrompts.modulesPerTeacher();
+    it("modulesPerTeacher", () => {
+      const e = turingPrompts.modulesPerTeacher(instructors, cohorts);
 
       expect(e).to.deep.equal({
         Pam: [2, 4],
@@ -604,8 +615,8 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("curriculumPerTeacher", () => {
-      const e = turingPrompts.curriculumPerTeacher();
+    it("curriculumPerTeacher", () => {
+      const e = turingPrompts.curriculumPerTeacher(instructors, cohorts);
 
       expect(e).to.deep.equal({
         html: ["Travis", "Louisa"],
@@ -624,8 +635,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Boss Prompts", () => {
-    it.skip("bossLoyalty", () => {
-      const e = bossPrompts.bossLoyalty();
+    it("bossLoyalty", () => {
+      const e = bossPrompts.bossLoyalty(bosses, sidekicks);
 
       expect(e).to.deep.equal([{
         bossName: "Scar",
@@ -641,8 +652,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Astronomy Prompts", () => {
-    it.skip("starsInConstellations", () => {
-      const e = astronomyPrompts.starsInConstellations();
+    it("starsInConstellations", () => {
+      const e = astronomyPrompts.starsInConstellations(constellations, stars);
 
       expect(e).to.deep.equal([{
         name: 'Rigel',
@@ -674,8 +685,8 @@ describe("PROTOTYPES", () => {
     ])
     });
 
-    it.skip("starsByColor", () => {
-      const e = astronomyPrompts.starsByColor();
+    it("starsByColor", () => {
+      const e = astronomyPrompts.starsByColor(constellations, stars);
 
       expect(e).to.deep.equal({
         blue: [{
@@ -752,22 +763,22 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("constellationsStarsExistIn", () => {
-      const e = astronomyPrompts.constellationsStarsExistIn();
+    it("constellationsStarsExistIn", () => {
+      const e = astronomyPrompts.constellationsStarsExistIn(constellations, stars);
 
       expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
     })
   });
 
   describe("Ultima Prompts", () => {
-    it.skip("totalDamage", () => {
-      const e = ultimaPrompts.totalDamage();
+    it("totalDamage", () => {
+      const e = ultimaPrompts.totalDamage(characters, weapons);
 
       expect(e).to.deep.equal(113)
     });
 
-    it.skip("charactersByTotal", () => {
-      const e = ultimaPrompts.charactersByTotal();
+    it("charactersByTotal", () => {
+      const e = ultimaPrompts.charactersByTotal(characters, weapons);
 
       expect(e).to.deep.equal([{
         Avatar: {
@@ -794,8 +805,8 @@ describe("PROTOTYPES", () => {
   });
 
   describe("Dinosaur Prompts", () => {
-    it.skip("countAwesomeDinosaurs", () => {
-      const e = dinosaurPrompts.countAwesomeDinosaurs();
+    it("countAwesomeDinosaurs", () => {
+      const e = dinosaurPrompts.countAwesomeDinosaurs(dinosaurs, humans, movies);
 
       expect(e).to.deep.equal({
         'Jurassic Park': 5,
@@ -806,8 +817,8 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("averageAgePerMovie", () => {
-      const e = dinosaurPrompts.averageAgePerMovie();
+    it("averageAgePerMovie", () => {
+      const e = dinosaurPrompts.averageAgePerMovie(dinosaurs, humans, movies);
 
       expect(e).to.deep.equal({
         'Steven Spielberg': {
@@ -826,8 +837,8 @@ describe("PROTOTYPES", () => {
       })
     });
 
-    it.skip("uncastActors", () => {
-      const e = dinosaurPrompts.uncastActors();
+    it("uncastActors", () => {
+      const e = dinosaurPrompts.uncastActors(dinosaurs, humans, movies);
 
       expect(e).to.deep.equal([{
         name: 'Justin Duncan',
@@ -850,8 +861,8 @@ describe("PROTOTYPES", () => {
       }])
     });
 
-    it.skip("actorsAgesInMovies", () => {
-      const e = dinosaurPrompts.actorsAgesInMovies();
+    it("actorsAgesInMovies", () => {
+      const e = dinosaurPrompts.actorsAgesInMovies(dinosaurs, humans, movies);
 
       expect(e).to.deep.equal([{
         name: 'Sam Neill',
